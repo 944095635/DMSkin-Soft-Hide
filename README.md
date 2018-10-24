@@ -44,9 +44,9 @@ There are some other ways to fetch `DMSkin.WPF.dll` and source code.
 - Nuget  `PM> Install-Package DMSkin.WPF -Version 2.5.0.4`
 - Git  `git clone git@github.com:944095635/DMSkin-for-WPF.git`
 
-## Usage & Configration
-#### 1. Create a new WPF project
-#### 2. [Add DMSkin.WPF.dll reference](http://p40kjburh.bkt.clouddn.com/18-6-13/50043356.jpg)
+## 使用 & 配置
+#### 1. 本项目使用VS 2017开发
+#### 2. NUGET包 引用了 DMSkin.WPF 2.5.0.9
 #### 3. Add App.xaml Resources
 ````xml
 <Application.Resources>
