@@ -1,0 +1,2 @@
+D:\SoftHide\DMSkin.SoftHide\bin\Debug\DMSkin.SoftHide.exe
+D:\SoftHide\DMSkin.SoftHide\bin\Debug\DMSkin.WPF.dll
