@@ -1,0 +1,75 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DMSkin.SoftHide.Style">
+    
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+        <Setter Property="Foreground" Value="#FF9E9E9E" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid>
+                        <Border
+                            x:Name="bg"
+                            Background="{StaticResource bgBrush}"
+                            Opacity="0.1"
+                            Visibility="Collapsed" />
+                        <Border Padding="10" Background="{StaticResource TransparentColor}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" MinWidth="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Border Margin="10,0,20,0">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="20"
+                                        Text="{Binding Index}" />
+                                </Border>
+                                <StackPanel
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text="{Binding Handle}" />
+                                </StackPanel>
+                                <Path
+                                    x:Name="SelectedIcon"
+                                    Grid.Column="2"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="10"
+                                    Data="M413.294642 754.027595c-8.935049 0-17.866002-3.407729-24.682483-10.224211L125.306737 480.498987c-13.631939-13.631939-13.631939-35.734051 0-49.365991 13.631939-13.631939 35.734051-13.631939 49.365991 0l238.621914 238.621914 436.077685-436.055158c13.630916-13.630916 35.733027-13.631939 49.365991 0.001024 13.631939 13.631939 13.631939 35.734051-0.001024 49.365991l-460.760168 460.737641C431.161667 750.618842 422.226618 754.027595 413.294642 754.027595z"
+                                    Fill="{TemplateBinding Foreground}"
+                                    Stretch="Uniform"
+                                    Visibility="Collapsed" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="#FF666666" />
+                            <Setter TargetName="bg" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="SelectedIcon" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ListBoxControlTemplate" TargetType="{x:Type ListBox}">
+        <Border x:Name="Bd" SnapsToDevicePixels="True">
+            <ScrollViewer
+                Padding="{TemplateBinding Padding}"
+                Focusable="False"
+                Style="{StaticResource for_scrollviewer}">
+                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            </ScrollViewer>
+        </Border>
+    </ControlTemplate>
+</ResourceDictionary>

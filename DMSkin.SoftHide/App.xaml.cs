@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
+﻿using DMSkin.WPF.API;
+using System;
 using System.Windows;
 
 namespace DMSkin.SoftHide
 {
-    /// <summary>
-    /// App.xaml 的交互逻辑
-    /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// 软件启动路径
+        /// </summary>
+        public static string RunPath = string.Empty;
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            RunPath = AppDomain.CurrentDomain.BaseDirectory;
+
+            //初始化Dispatcher
+            Execute.InitializeWithDispatcher();
+        }
     }
 }

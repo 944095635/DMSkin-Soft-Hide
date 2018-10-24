@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DMSkin.SoftHide.Style">
+    <LinearGradientBrush x:Key="bgBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+        <LinearGradientBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                <SkewTransform CenterX="0.5" CenterY="0.5" />
+                <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5" />
+                <TranslateTransform />
+            </TransformGroup>
+        </LinearGradientBrush.RelativeTransform>
+        <GradientStop Offset="0.205" Color="#FF56FF84" />
+        <GradientStop Color="#FFD82153" />
+        <GradientStop Offset="0.389" Color="#FF374181" />
+        <GradientStop Offset="0.544" Color="#FFBB9839" />
+        <GradientStop Offset="0.736" Color="#FFA338CB" />
+        <GradientStop Offset="0.912" Color="#FFD8D46E" />
+    </LinearGradientBrush>
+</ResourceDictionary>
