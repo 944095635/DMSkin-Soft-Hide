@@ -6,8 +6,6 @@
 
 #### 隐藏软件&amp;游戏的界面&amp;任务栏图标&amp;支持热键.
 
-[中文说明请点这里](./DMSkin.Docs/)
-
 <img src="https://raw.githubusercontent.com/944095635/DMSkin-for-WPF/master/DMSkin.ScreenShot/demo.png" align="center">
 
 ## Preface 
