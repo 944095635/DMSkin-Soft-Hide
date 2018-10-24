@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DMSkin.WPF, Version=2.5.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DMSkin.WPF.2.5.0.9\lib\net40\DMSkin.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Soft.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Win32.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,6 +99,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,12 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="timg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DMSkin\DMSkin.WPF\DMSkin.WPF.csproj">
-      <Project>{168352b1-6a0c-4c9c-8a32-68b512da3cfc}</Project>
-      <Name>DMSkin.WPF</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

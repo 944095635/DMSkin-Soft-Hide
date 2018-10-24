@@ -74,8 +74,8 @@
                     Margin="10"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Command="{Binding AllSelectedCommand}"
-                    Content="全选"
+                    Command="{Binding ClearCommand}"
+                    Content="清空"
                     DMDisplayLine="False"
                     DMSystemButtonHoverColor="Transparent"
                     FontWeight="ExtraLight" />
@@ -85,6 +85,7 @@
                     Background="Transparent"
                     BorderThickness="0"
                     Focusable="False"
+                    IsEnabled="{Binding StartButtonEnabled}"
                     ItemsSource="{Binding SoftList}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     SelectionMode="Multiple"
@@ -95,38 +96,38 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     FontWeight="ExtraLight"
-                    Text="热键设置" />
+                    Text="热键设置 (暂时仅支持 Ctrl + * )" />
                 <Grid Grid.Row="3">
                     <StackPanel>
                         <WrapPanel Margin="15,0,0,0">
                             <TextBlock
-                                Grid.Row="2"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontWeight="ExtraLight"
-                                Text="程序隐藏热键" />
-                            <TextBox VerticalAlignment="Center" Text="Ctrl+UP" />
+                                Text="显示/隐藏 自身热键" />
+                            <TextBox
+                                x:Name="SelfKey"
+                                MinWidth="80"
+                                VerticalAlignment="Center"
+                                IsReadOnly="True"
+                                PreviewKeyDown="TextBox_PreviewKeyDown"
+                                Text="Ctrl + Up" />
                         </WrapPanel>
                         <WrapPanel Margin="15,0,0,0">
                             <TextBlock
-                                Grid.Row="2"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontWeight="ExtraLight"
-                                Text="程序显示热键" />
-                            <TextBox VerticalAlignment="Center" Text="Ctrl+Down" />
-                        </WrapPanel>
-                        <WrapPanel Margin="15,0,0,0">
-                            <TextBlock
-                                Grid.Row="2"
-                                Margin="10"
-                                HorizontalAlignment="Left"
+                                Text="显示/隐藏 程序热键" />
+                            <TextBox
+                                x:Name="SoftKey"
+                                MinWidth="80"
                                 VerticalAlignment="Center"
-                                FontWeight="ExtraLight"
-                                Text="隐藏自身热键" />
-                            <TextBox VerticalAlignment="Center" Text="Ctrl+Left" />
+                                IsReadOnly="True"
+                                PreviewKeyDown="TextBox_PreviewKeyDown"
+                                Text="Ctrl + Down" />
                         </WrapPanel>
                         <dmcontrols:DMButton
                             Width="200"
@@ -134,8 +135,9 @@
                             Margin="15"
                             Background="#33EEEEEE"
                             Command="{Binding SaveCommand}"
-                            Content="保存"
-                            CornerRadius="5" />
+                            Content="启动"
+                            CornerRadius="5"
+                            IsEnabled="{Binding StartButtonEnabled}" />
                     </StackPanel>
                 </Grid>
             </Grid>

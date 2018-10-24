@@ -1,4 +1,5 @@
 ﻿using DMSkin.SoftHide.Model;
+using DMSkin.SoftHide.Properties;
 using DMSkin.WPF;
 using DMSkin.WPF.API;
 using System;
@@ -38,7 +39,7 @@ namespace DMSkin.SoftHide.ViewModel
                     {
                         Soft soft = new Soft
                         {
-                            Handle = p.MainWindowHandle.ToString(),
+                            Handle = p.MainWindowHandle,
                             Title = p.MainWindowTitle,
                             Name = p.ProcessName,
                             Index = index
@@ -58,7 +59,7 @@ namespace DMSkin.SoftHide.ViewModel
         }
 
 
-        #region 程序列表
+        #region 程序列表集合
         ObservableCollection<Soft> softList;
         public ObservableCollection<Soft> SoftList
         {
@@ -79,6 +80,23 @@ namespace DMSkin.SoftHide.ViewModel
         #endregion
 
 
+        private bool startButtonEnabled = true;
+
+        /// <summary>
+        /// 启用 启动按钮
+        /// </summary>
+        public bool StartButtonEnabled
+        {
+            get { return startButtonEnabled; }
+            set
+            {
+                startButtonEnabled = value;
+                OnPropertyChanged("StartButtonEnabled");
+            }
+        }
+
+
+
         /// <summary>
         /// 保存操作
         /// </summary>
@@ -88,19 +106,79 @@ namespace DMSkin.SoftHide.ViewModel
             {
                 return new DelegateCommand(obj =>
                 {
-                    //需要保存 勾选的程序 和 热键配置
+                    //关闭按钮
+                    StartButtonEnabled = false;
 
+                    //注册新的热键
+                    //1.先注册 软件自身的隐藏 显示 快捷键
+                    //2.注册 隐藏 显示软件的快捷键 （隐藏 和 快捷建 相同）
 
+                    int selfkey = Settings.Default.SelfKey;
+                    //读取 配置文件里面的 
+                    int U = KeyInterop.VirtualKeyFromKey((Key)(selfkey));
+                    HotKey hot = new HotKey(App.Current.MainWindow, HotKey.KeyFlags.MOD_CONTROL, U);
+                    hot.OnHotKey += Self_OnHotKey;
+
+                    int softkey = Settings.Default.SoftKey;
+                    int O = KeyInterop.VirtualKeyFromKey((Key)(softkey));
+                    HotKey hot2 = new HotKey(App.Current.MainWindow, HotKey.KeyFlags.MOD_CONTROL, O);
+                    hot2.OnHotKey += Soft_OnHotKey;
                 });
             }
         }
 
+        bool SoftHide = false;
+        /// <summary>
+        /// 选中的软件隐藏或者显示
+        /// </summary>
+        private void Soft_OnHotKey()
+        {
+            if (SoftHide)//软件被隐藏
+            {
+                //把所有软件显示出来
+                foreach (var item in SoftList)
+                {
+                    if (item.IsSelected)
+                    {
+                        Win32.ShowWindow(item.Handle, Win32.Sw_Show);
+                    }
+                }
+                SoftHide = false;
+            }
+            else
+            {
+                //把所有软件隐藏
+                foreach (var item in SoftList)
+                {
+                    if (item.IsSelected)
+                    {
+                        Win32.ShowWindow(item.Handle, Win32.Sw_Hide);
+                    }
+                }
+                SoftHide = true;
+            }
+        }
+
+        /// <summary>
+        /// 隐藏或者显示自身
+        /// </summary>
+        private void Self_OnHotKey()
+        {
+            if (App.Current.MainWindow.IsVisible)
+            {
+                App.Current.MainWindow.Hide();
+            }
+            else
+            {
+                App.Current.MainWindow.Show();
+            }
+        }
 
 
         /// <summary>
-        /// 全选
+        /// 清空选中
         /// </summary>
-        public ICommand AllSelectedCommand
+        public ICommand ClearCommand
         {
             get
             {
@@ -108,7 +186,7 @@ namespace DMSkin.SoftHide.ViewModel
                 {
                     foreach (var item in SoftList)
                     {
-                        item.IsSelected = true;
+                        item.IsSelected = false;
                     }
                 });
             }

@@ -7,11 +7,11 @@ namespace DMSkin.SoftHide.Model
 {
     public class Soft:ViewModelBase
     {
-        private string handle;
+        private IntPtr handle;
         /// <summary>
         /// 句柄
         /// </summary>
-        public string Handle
+        public IntPtr Handle
         {
             get { return handle; }
             set
