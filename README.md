@@ -13,7 +13,7 @@
 2.本项目仅完成Ctrl+热键，其他热键有需要可以自行完善
 
 ## 下载直接运行程序
-#### [Download EXE](https://github.com/944095635/DMSkin-for-WPF/releases/download/2.5.0.1/Release.zip)
+#### [Download EXE](https://github.com/944095635/DMSkin-Soft-Hide/releases/download/0.0.0.1/Release.zip)
 
 ## 使用 & 配置
 #### 1. 本项目使用VS 2017开发 .NET Framework 4.0
