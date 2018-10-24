@@ -17,6 +17,6 @@
 #### [Download EXE](https://github.com/944095635/DMSkin-Soft-Hide/releases/download/0.0.0.1/Release.zip)
 
 ## 使用 & 配置
-#### 1. 本项目使用VS 2017开发 .NET Framework 4.0
+#### 1. 本项目使用VS 2017 + .NET Framework 4.0 开发
 #### 2. NUGET包 引用了 DMSkin.WPF 2.5.0.9
 
