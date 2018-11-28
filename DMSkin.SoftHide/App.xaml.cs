@@ -1,4 +1,4 @@
-﻿using DMSkin.WPF.API;
+﻿using DMSkin.Core.Common;
 using System;
 using System.Windows;
 

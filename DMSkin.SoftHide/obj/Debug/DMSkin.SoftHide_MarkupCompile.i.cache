@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\SoftHide\DMSkin.SoftHide\obj\Debug\
+D:\DMSkin\软件隐藏工具\DMSkin.SoftHide\obj\Debug\
 DMSkin.SoftHide
 none
 false
 DEBUG;TRACE
-D:\SoftHide\DMSkin.SoftHide\App.xaml
+D:\DMSkin\软件隐藏工具\DMSkin.SoftHide\App.xaml
 31046803216
 
-10-45729552
-13-1820576649
+10-1596782584
+14-1612439450
 MainWindow.xaml;Style\Color.xaml;Style\ListBoxStyle.xaml;
 
 True

@@ -1,13 +1,11 @@
-﻿using DMSkin.SoftHide.Model;
+﻿using DMSkin.Core.Common;
+using DMSkin.Core.MVVM;
+using DMSkin.SoftHide.Model;
 using DMSkin.SoftHide.Properties;
-using DMSkin.WPF;
-using DMSkin.WPF.API;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
