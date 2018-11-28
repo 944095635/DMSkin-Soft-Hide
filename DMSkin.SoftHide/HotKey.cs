@@ -73,7 +73,6 @@ namespace DMSkin.SoftHide
 
             //添加这个热键索引
             KeyPair.Add(KeyId, this);
-            
         }
 
         #region core
